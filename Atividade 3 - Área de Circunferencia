@@ -1,0 +1,41 @@
+"""Área da circunferência
+
+A fórmula para calcular a área de uma circunferência é: área = π ×raio2. Considerando para este problema que π = 3.14159265: • Efetue o cálculo da área, elevando o valor de raio ao quadrado e multiplicando por π. Entrada: A entrada contém um valor de ponto flutuante (dupla precisão), no caso, a variável raio.
+Saída: Apresente a mensagem "A=" seguido pelo valor da variável area, conforme exemplo abaixo, com 4 casas após o ponto decimal. Utilize variáveis de dupla precisão (double). Como em todos os problemas, não esqueça de imprimir o fim de linha após o resultado, caso contrário, você receberá "Presentation Error"."""
+
+import math
+
+def calcular_area_circunferencia(raio):
+    PI = 3.14159265
+    return PI * (raio ** 2)
+
+def entrada_valida(valor):
+    try:
+        numero = float(valor)
+        if math.isnan(numero) or math.isinf(numero):
+            return False, "Valor inválido: número não é finito."
+        if numero < 0:
+            return False, "O raio não pode ser negativo."
+        return True, numero
+    except ValueError:
+        return False, "Erro: entrada não é um número válido."
+
+def solicitar_raio():
+    while True:
+        entrada = input("Digite o raio da circunferência (positivo): ").strip()
+        if entrada == "":
+            print("Entrada vazia. Tente novamente.")
+            continue
+        valido, resultado = entrada_valida(entrada)
+        if valido:
+            return resultado
+        else:
+            print(resultado)
+
+def main():
+    raio = solicitar_raio()
+    area = calcular_area_circunferencia(raio)
+    print(f"A={area:.4f}")  # Fim de linha garantido
+
+if __name__ == "__main__":
+    main()
