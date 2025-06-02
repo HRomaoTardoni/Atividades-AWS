@@ -1,0 +1,39 @@
+"""Classificador de Idade
+
+Crie um programa que solicite a idade do usuário e classifique-o em uma das seguintes categorias:
+
+Criança (0-12 anos),
+
+Adolescente (13-17 anos),
+
+Adulto (18-59 anos)
+
+Idoso (60 anos ou mais).
+
+"""
+def classificar_idade(idade):
+    """Classifica a idade fornecida em categorias."""
+    if idade < 0:
+        return "Idade inválida! A idade não pode ser negativa."
+    elif idade <= 12:
+        return "Criança (0-12 anos)"
+    elif idade <= 17:
+        return "Adolescente (13-17 anos)"
+    elif idade <= 59:
+        return "Adulto (18-59 anos)"
+    else:
+        return "Idoso (60 anos ou mais)"
+
+def main():
+    while True:
+        try:
+            entrada = input("Digite sua idade: ").strip()
+            idade = int(entrada)
+            resultado = classificar_idade(idade)
+            print("Classificação:", resultado)
+            break  # Sai do loop após entrada válida
+        except ValueError:
+            print("Erro: Digite um número inteiro válido.")
+
+if __name__ == "__main__":
+    main()
